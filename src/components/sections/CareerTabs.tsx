@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 import { projects } from "@/lib/projects";
@@ -101,12 +102,24 @@ export function CareerTabs() {
 
           {activeTab === "projects" && (
             <div className="grid gap-6 lg:grid-cols-3">
-              {projects.map((project) => (
+              {[...projects].sort((a, b) => (a.screenshot ? 0 : 1) - (b.screenshot ? 0 : 1)).map((project) => (
                 <LiquidGlassPanel
                   key={project.name}
-                  className="h-full"
-                  contentClassName="flex h-full flex-col gap-6 p-6"
+                  className={`overflow-hidden ${project.screenshot ? "h-full" : "self-start"}`}
+                  contentClassName="flex flex-col"
                 >
+                  {project.screenshot && (
+                    <div className="relative aspect-[2/1] w-full overflow-hidden bg-white/[0.03]">
+                      <Image
+                        src={project.screenshot}
+                        alt={`${project.name} screenshot`}
+                        fill
+                        className="object-cover object-top"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      />
+                    </div>
+                  )}
+                  <div className="flex flex-1 flex-col gap-6 p-6">
                   <div className="space-y-4">
                     <div className="flex items-center justify-between gap-3">
                       <h3 className="text-xl font-semibold text-white">{project.name}</h3>
@@ -126,7 +139,16 @@ export function CareerTabs() {
                       </span>
                     ))}
                   </div>
-                  <p className="mt-auto text-sm leading-7 text-white/68">{project.outcome}</p>
+                  <p className="text-sm leading-7 text-white/68">{project.outcome}</p>
+                  <a
+                    href={project.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-auto inline-flex items-center gap-1.5 text-xs font-medium text-accent-cyan/80 transition hover:text-accent-cyan"
+                  >
+                    Source Code &rarr;
+                  </a>
+                  </div>
                 </LiquidGlassPanel>
               ))}
             </div>

@@ -39,7 +39,6 @@ export const projects: Project[] = [
     stack: ["TypeScript", "MCP SDK", "Hypixel API", "Zod"],
     outcome: "8 tools with smart caching, rate limiting, and real-time bazaar/auction data for AI-powered game analysis.",
     href: "https://github.com/ab2891/skyblock-mcp",
-    screenshot: "/screenshots/skyblock-mcp.png",
   },
   {
     name: "Lifebot",
