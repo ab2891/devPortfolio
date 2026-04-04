@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
@@ -18,8 +18,23 @@ type TabKey = (typeof tabs)[number];
 export function CareerTabs() {
   const [activeTab, setActiveTab] = useState<TabKey>("experience");
 
+  useEffect(() => {
+    const handleHash = () => {
+      const hash = window.location.hash.replace("#", "") as TabKey;
+      if (tabs.includes(hash)) {
+        setActiveTab(hash);
+      }
+    };
+    handleHash();
+    window.addEventListener("hashchange", handleHash);
+    return () => window.removeEventListener("hashchange", handleHash);
+  }, []);
+
   return (
-    <section id="experience" className="pt-24">
+    <section id="career" className="pt-24">
+      <a id="experience" className="invisible absolute" aria-hidden />
+      <a id="projects" className="invisible absolute" aria-hidden />
+      <a id="education" className="invisible absolute" aria-hidden />
       <Container className="space-y-10">
         <SectionHeading eyebrow="Career" />
 
