@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 
 import { siteConfig } from "@/lib/site";
-import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { LiquidGlassPanel } from "@/components/ui/LiquidGlassPanel";
 
@@ -40,17 +39,6 @@ export function Hero() {
               <p className="max-w-2xl text-base leading-8 text-foreground-muted sm:text-lg">
                 {siteConfig.hero.subheadline}
               </p>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 22 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.16, ease: "easeOut" }}
-              className="flex flex-col gap-3 sm:flex-row"
-            >
-              <Button href="#projects">View Projects</Button>
-              <Button href={siteConfig.social.github} variant="secondary">
-                GitHub
-              </Button>
             </motion.div>
           </div>
         </LiquidGlassPanel>
