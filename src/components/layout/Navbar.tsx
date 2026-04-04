@@ -34,6 +34,12 @@ export function Navbar() {
                   key={item.href}
                   className="rounded-full px-2 py-1 transition hover:text-white"
                   href={item.href}
+                  onClick={(e) => {
+                    if (window.location.hash === item.href) {
+                      e.preventDefault();
+                      window.dispatchEvent(new HashChangeEvent("hashchange"));
+                    }
+                  }}
                 >
                   {item.label}
                 </a>
@@ -79,7 +85,13 @@ export function Navbar() {
                       key={item.href}
                       className="rounded-lg px-2 py-1.5 transition hover:text-white"
                       href={item.href}
-                      onClick={() => setMenuOpen(false)}
+                      onClick={(e) => {
+                        setMenuOpen(false);
+                        if (window.location.hash === item.href) {
+                          e.preventDefault();
+                          window.dispatchEvent(new HashChangeEvent("hashchange"));
+                        }
+                      }}
                     >
                       {item.label}
                     </a>

@@ -23,18 +23,15 @@ export function CareerTabs() {
       const hash = window.location.hash.replace("#", "") as TabKey;
       if (tabs.includes(hash)) {
         setActiveTab(hash);
+        document.getElementById("career")?.scrollIntoView({ behavior: "smooth" });
       }
     };
-    handleHash();
     window.addEventListener("hashchange", handleHash);
     return () => window.removeEventListener("hashchange", handleHash);
   }, []);
 
   return (
     <section id="career" className="pt-24">
-      <a id="experience" className="invisible absolute" aria-hidden />
-      <a id="projects" className="invisible absolute" aria-hidden />
-      <a id="education" className="invisible absolute" aria-hidden />
       <Container className="space-y-10">
         <SectionHeading eyebrow="Career" />
 
