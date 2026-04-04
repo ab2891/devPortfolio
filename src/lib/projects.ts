@@ -50,4 +50,13 @@ export const projects: Project[] = [
     href: "https://github.com/ab2891/lifebot",
     screenshot: "/screenshots/lifebot.png",
   },
+  {
+    name: "Parameter Golf",
+    category: "ML Research",
+    description:
+      "OpenAI challenge entry to train the best language model that fits within 16MB and trains in under 10 minutes on 8×H100 GPUs. Optimizes compression efficiency (bits per byte) on FineWeb using transformer architectures with Muon optimizer, grouped query attention, and tied embeddings.",
+    stack: ["Python", "PyTorch", "CUDA", "Distributed Training", "Muon Optimizer"],
+    outcome: "Compact transformer with custom Newton-Schulz orthogonalization optimizer, quantization-aware training, and multi-GPU distributed training pipeline.",
+    href: "https://github.com/ab2891/parameter-golf",
+  },
 ];
