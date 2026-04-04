@@ -19,6 +19,14 @@ export function CareerTabs() {
   const [activeTab, setActiveTab] = useState<TabKey>("experience");
 
   useEffect(() => {
+    // On mount, pick up tab from hash but don't scroll — page should start at top
+    const initialHash = window.location.hash.replace("#", "") as TabKey;
+    if (tabs.includes(initialHash)) {
+      setActiveTab(initialHash);
+      history.replaceState(null, "", window.location.pathname);
+      window.scrollTo(0, 0);
+    }
+
     const handleHash = () => {
       const hash = window.location.hash.replace("#", "") as TabKey;
       if (tabs.includes(hash)) {
