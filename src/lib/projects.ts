@@ -41,6 +41,16 @@ export const projects: Project[] = [
     href: "https://github.com/ab2891/skyblock-mcp",
   },
   {
+    name: "obsidian-kb",
+    category: "Agent Tooling",
+    description:
+      "A Karpathy-style LLM-wiki workflow for Obsidian vaults, shipped as both a Claude / Copilot / Gemini agent skill and a standalone npm CLI. Implements ingest, query, lint, index, bootstrap, and watch workflows so any Obsidian vault becomes an LLM-queryable second brain — a free, local-first alternative to RAG-as-a-service.",
+    stack: ["TypeScript", "Node", "Claude Skills", "Obsidian MCP", "chokidar", "gray-matter"],
+    outcome:
+      "Five-command CLI published to npm as obsidian-kb-cli with code-span-aware wikilink parsing, schema-drift detection from per-topic CLAUDE.md, git-history-based stale-claim warnings, and a vitest-style watch mode for live re-linting.",
+    href: "https://github.com/ab2891/obsidian-kb-cli",
+  },
+  {
     name: "Lifebot",
     category: "Staff Operations Platform",
     description:
