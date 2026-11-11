@@ -2,71 +2,105 @@ import type { Project } from "@/types";
 
 export const projects: Project[] = [
   {
+    name: "Brewers Pitch Analysis",
+    category: "Sports Analytics",
+    status: "Research prototype",
+    description:
+      "An interactive matchup explorer for Milwaukee’s pitching staff. Uses Statcast data to compare pitch choices for a given hitter, count, and base/out situation.",
+    stack: ["Python", "XGBoost", "pandas", "JavaScript"],
+    outcome:
+      "Built a pitch-count audit and chronological evaluation workflow, with matchup plans for 13 pitchers against 14 hitters. Rankings are observational estimates, with support and uncertainty documented.",
+  },
+  {
+    name: "BTC Trading Research Engine",
+    category: "Market Data",
+    status: "Paper-trading research",
+    description:
+      "A C++ engine for collecting prediction-market and BTC spot data, replaying events, and comparing trading ideas without risking real money.",
+    stack: ["C++20", "SQLite", "WebSockets", "Docker"],
+    outcome:
+      "Runs six paper strategies with separate ledgers. Simulated fills account for latency and available liquidity; persisted state allows experiments to resume after a restart.",
+    href: "https://github.com/ab2891/btc-trading-engine",
+  },
+  {
     name: "Telemetry Platform",
     category: "Observability",
+    status: "Prototype",
     description:
-      "Real-time ingest and dashboard for transaction telemetry. Sub-millisecond event processing with live-updating Svelte visualizations over WebSocket streams.",
-    stack: ["Rust", "Axum", "Svelte", "Docker Compose", "WebSockets"],
-    outcome: "Full MVP with real-time dashboards, structured ingest API, and containerized deployment.",
+      "An event-monitoring dashboard with Rust services for ingestion and live updates. Browse events by source, type, and severity while new events stream into the interface.",
+    stack: ["Rust", "Axum", "Svelte", "PostgreSQL", "Redis"],
+    outcome:
+      "Separated durable event storage from live delivery: PostgreSQL stores events, Redis distributes updates, and a WebSocket service pushes them to the dashboard.",
     href: "https://github.com/ab2891/telemetry-platform",
     screenshot: "/screenshots/telemetry.png",
   },
   {
     name: "COA Display",
     category: "Minecraft Mod",
+    status: "Client mod",
     description:
-      "Fabric mod for Hypixel Skyblock that tracks Crown of Avarice coin progress with a configurable HUD, party chat commands, and PCA-based Diana burrow detection using arrow particle analysis.",
-    stack: ["Java", "Fabric", "Mixin", "YACL3", "PCA / Linear Algebra"],
-    outcome: "Arrow shaft detection via power iteration on covariance matrix, cubic polynomial burrow extrapolation.",
+      "A Fabric mod for Hypixel SkyBlock that keeps Crown of Avarice progress visible through a configurable HUD and persistent crown completion tracking.",
+    stack: ["Java", "Fabric", "Mixin", "YACL"],
+    outcome:
+      "Built a movable HUD with saved settings. Experimental Diana burrow prediction analyzes arrow particles with principal component analysis and polynomial extrapolation.",
     href: "https://github.com/ab2891/coa-display",
     screenshot: "/screenshots/coa-display.png",
   },
   {
     name: "Poker Trainer",
-    category: "Game AI",
+    category: "Game Theory",
+    status: "Browser prototype",
     description:
-      "Interactive poker training tool with hand analysis, equity calculations, and scenario replay. Designed to sharpen decision-making through deliberate practice.",
-    stack: ["Rust", "Game Theory", "Statistics"],
-    outcome: "Instant equity evaluation and hand-range visualization for study sessions.",
-    href: "https://github.com/ab2891/poker-trainer",
+      "A preflop poker practice app that generates training spots and gives feedback on your decisions using a Rust engine compiled to WebAssembly.",
+    stack: ["Rust", "WebAssembly", "React", "TypeScript", "PWA"],
+    outcome:
+      "Moved the training engine into the browser with typed JavaScript bindings, chart-based action evaluation, and an installable PWA shell.",
+    href: "https://github.com/ab2891/poker-trainer-pwa",
     screenshot: "/screenshots/poker-trainer.png",
   },
   {
     name: "Skyblock MCP Server",
-    category: "MCP / API",
+    category: "AI Tooling",
+    status: "Developer tool",
     description:
-      "Model Context Protocol server that gives AI assistants live access to Hypixel Skyblock data — bazaar prices, auction house, player profiles, networth estimates, mayor elections, and item search.",
+      "An MCP server that lets AI assistants query Hypixel SkyBlock data: player profiles, bazaar prices, auctions, elections, and item reference data.",
     stack: ["TypeScript", "MCP SDK", "Hypixel API", "Zod"],
-    outcome: "8 tools with smart caching, rate limiting, and real-time bazaar/auction data for AI-powered game analysis.",
+    outcome:
+      "Exposes eight tools with validated inputs, endpoint-specific cache lifetimes, and a shared rate limiter to reduce repeated API requests.",
     href: "https://github.com/ab2891/skyblock-mcp",
   },
   {
-    name: "obsidian-kb",
-    category: "Agent Tooling",
+    name: "Obsidian KB",
+    category: "Developer Tooling",
+    status: "CLI + agent skill",
     description:
-      "A Karpathy-style LLM-wiki workflow for Obsidian vaults, shipped as both a Claude / Copilot / Gemini agent skill and a standalone npm CLI. Implements ingest, query, lint, index, bootstrap, and watch workflows so any Obsidian vault becomes an LLM-queryable second brain — a free, local-first alternative to RAG-as-a-service.",
-    stack: ["TypeScript", "Node", "Claude Skills", "Obsidian MCP", "chokidar", "gray-matter"],
+      "A knowledge-base workflow that turns source material into linked Obsidian notes. An agent skill handles ingestion and querying; a companion CLI handles routine maintenance.",
+    stack: ["TypeScript", "Node.js", "Obsidian MCP", "chokidar"],
     outcome:
-      "Five-command CLI published to npm as obsidian-kb-cli with code-span-aware wikilink parsing, schema-drift detection from per-topic CLAUDE.md, git-history-based stale-claim warnings, and a vitest-style watch mode for live re-linting.",
+      "Built wikilink checks, frontmatter validation, schema-drift detection, and a watch mode, plus commands for creating topic folders, drafting indexes, and logging changes.",
     href: "https://github.com/ab2891/obsidian-kb-cli",
   },
   {
     name: "Lifebot",
-    category: "Staff Operations Platform",
+    category: "Staff Operations",
+    status: "Local demo",
     description:
-      "Aquatics-specific staff operations platform built for YMCA pool environments. Acts as an intelligent overlay on top of Sling scheduling — managing guards, certifications, shift templates, recurring cycles, policy enforcement, and plain-English operational querying through an OpenClaw-style orchestration layer.",
-    stack: ["Rust", "Tauri", "Svelte", "SQLite", "Axum", "Policy Engine"],
-    outcome: "Scheduling engine with certification validation, age/region policy filtering, explainable decision tracing, and a messaging abstraction layer for staff coordination.",
+      "A desktop operations assistant for aquatics coordinators. Manage guard certifications, recurring shifts, and scheduling requests, with an explanation for each assignment decision.",
+    stack: ["Rust", "Tauri", "Svelte", "SQLite"],
+    outcome:
+      "Built policy checks for certifications, age, hours, and overlapping shifts. The seeded demo uses mock Sling and messaging providers to exercise scheduling workflows locally.",
     href: "https://github.com/ab2891/lifebot",
     screenshot: "/screenshots/lifebot.png",
   },
   {
     name: "Parameter Golf",
-    category: "ML Research",
+    category: "Machine Learning",
+    status: "Experiment",
     description:
-      "OpenAI challenge entry to train the best language model that fits within 16MB and trains in under 10 minutes on 8×H100 GPUs. Optimizes compression efficiency (bits per byte) on FineWeb using transformer architectures with Muon optimizer, grouped query attention, and tied embeddings.",
-    stack: ["Python", "PyTorch", "CUDA", "Distributed Training", "Muon Optimizer"],
-    outcome: "Compact transformer with custom Newton-Schulz orthogonalization optimizer, quantization-aware training, and multi-GPU distributed training pipeline.",
-    href: "https://github.com/ab2891/parameter-golf",
+      "A language-model compression experiment for the Parameter Golf challenge, exploring how shared transformer blocks can provide greater effective depth within a small model artifact.",
+    stack: ["Python", "PyTorch", "CUDA", "Quantization"],
+    outcome:
+      "Implemented shared transformer blocks with per-loop level signals, 6-bit quantization-aware training, and compressed model export to explore the trade-off between storage and compute.",
+    href: "https://github.com/ab2891/parameter-golf/blob/main/records/track_10min_16mb/depth_recurrence_int6_qat/README.md",
   },
 ];

@@ -122,7 +122,7 @@ export function CareerTabs() {
 
           {activeTab === "projects" && (
             <div className="grid gap-6 lg:grid-cols-3">
-              {[...projects].sort((a, b) => (a.screenshot ? 0 : 1) - (b.screenshot ? 0 : 1)).map((project) => (
+              {projects.map((project) => (
                 <LiquidGlassPanel
                   key={project.name}
                   className={`overflow-hidden ${project.screenshot ? "h-full" : "self-start"}`}
@@ -141,12 +141,13 @@ export function CareerTabs() {
                   )}
                   <div className="flex flex-1 flex-col gap-6 p-6">
                   <div className="space-y-4">
-                    <div className="flex items-center justify-between gap-3">
+                    <div className="flex flex-wrap items-center justify-between gap-3">
                       <h3 className="text-xl font-semibold text-white">{project.name}</h3>
                       <span className="rounded-full border border-white/18 px-3 py-1 text-xs uppercase tracking-[0.2em] text-white/70">
                         {project.category}
                       </span>
                     </div>
+                    <p className="text-xs text-accent-cyan/80">{project.status}</p>
                     <p className="text-sm leading-7 text-white/70">{project.description}</p>
                   </div>
                   <div className="flex flex-wrap gap-2">
@@ -160,6 +161,7 @@ export function CareerTabs() {
                     ))}
                   </div>
                   <p className="text-sm leading-7 text-white/68">{project.outcome}</p>
+                  {project.href && (
                   <a
                     href={project.href}
                     target="_blank"
@@ -168,6 +170,7 @@ export function CareerTabs() {
                   >
                     Source Code &rarr;
                   </a>
+                  )}
                   </div>
                 </LiquidGlassPanel>
               ))}

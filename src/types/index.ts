@@ -1,10 +1,11 @@
 export type Project = {
   name: string;
   category: string;
+  status: string;
   description: string;
   stack: string[];
   outcome: string;
-  href: string;
+  href?: string;
   screenshot?: string;
 };
 
